@@ -1,7 +1,7 @@
 package com.neoflex.calculator.service;
 
 import com.neoflex.calculator.dto.PaymentScheduleElementDto;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -14,12 +14,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.neoflex.calculator.util.CalculateMonthlyRate.getMonthlyRate;
+import static com.neoflex.calculator.util.CalculatorUtils.getMonthlyRate;
 import static java.math.BigDecimal.ONE;
 import static java.math.MathContext.DECIMAL64;
 import static java.math.RoundingMode.HALF_EVEN;
 
-@AllArgsConstructor
+/*
+ *LoanCalculator
+ *
+ * @author Shilin Vyacheslav
+ */
+@RequiredArgsConstructor
 @Component
 @Slf4j
 public class LoanCalculator {
@@ -32,16 +37,18 @@ public class LoanCalculator {
     private final RoundingMode ROUNDING_MODE = HALF_EVEN;
 
     /**
-      Используется формула расчета аннуитетного платежа:
-      Х = С * К (где X — аннуитетный платеж, С — сумма кредита,К — коэффициент аннуитета)
-     Коэффициент аннуитета считается так:
-     К = (М * (1 + М) ^ S) / ((1 + М) ^ S — 1) (где М — месячная процентная ставка по кредиту,
-     S — срок кредита в месяцах.
-     *@param amount Сумма кредита
-     *@param term   Срок кредита в месяцах
+     * Используется формула расчета аннуитетного платежа:
+     * Х = С * К (где X — аннуитетный платеж, С — сумма кредита,К — коэффициент аннуитета)
+     * Коэффициент аннуитета считается так:
+     * К = (М * (1 + М) ^ S) / ((1 + М) ^ S — 1)
+     * (где М — месячная процентная ставка по кредиту,S — срок кредита в месяцах.
+     *
+     * @param amount Сумма кредита
+     * @param term   Срок кредита в месяцах
      * @param rate   Годовая процентная ставка кредита
      * @return Сумма ежемесячного платежа
      */
+
     public BigDecimal monthlyInstallments(BigDecimal amount, int term, BigDecimal rate) {
         log.info("Monthly installments");
         BigDecimal monthlyRate = getMonthlyRate(rate);
@@ -110,4 +117,3 @@ public class LoanCalculator {
         paymentScheduleElementDto.setRemainingDebt(remainDebt.setScale(2, ROUNDING_MODE));
     }
 }
-

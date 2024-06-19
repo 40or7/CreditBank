@@ -6,9 +6,14 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+/*
+ *LoanOfferDto
+ *
+ * @author Shilin Vyacheslav
+ */
 @Data
 @Builder
-public class LoanOfferDto {
+public class LoanOfferDto{
     private UUID statementId;
     private BigDecimal requestedAmount;
     private BigDecimal totalAmount;

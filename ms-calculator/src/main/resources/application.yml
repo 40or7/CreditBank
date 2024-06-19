@@ -1,0 +1,29 @@
+calculator:
+    base-rate: 15
+    client:
+        rate-reduction: -1
+    family-status:
+        divorced-rate-addition: 1
+        married-rate-reduction: -3
+    gender:
+        female-rate-reduction: -3
+        male-rate-reduction: -3
+        non-binary-rate-addition: 7
+    insurance:
+        coefficient: 1.1
+        rate-reduction: -3
+    working-position:
+        manager-rate-reduction: -2
+        top-manager-rate-reduction: -3
+    working-status:
+        business-owner-rate-addition: 3
+        self-employed-rate-addition: 1
+logging:
+    level:
+        root: info
+server:
+    port: 8080
+spring:
+    mvc:
+        format:
+            date: yyyy.MM.dd

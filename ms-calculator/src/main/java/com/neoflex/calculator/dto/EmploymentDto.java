@@ -9,9 +9,14 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/*
+ *EmploymentDto
+ *
+ * @author Shilin Vyacheslav
+ */
 @Data
 @Builder
-public class EmploymentDto {
+public class EmploymentDto{
 
     @NotNull(message = "Трудовой статус не может быть пустым")
     private WorkingStatus workingStatus;

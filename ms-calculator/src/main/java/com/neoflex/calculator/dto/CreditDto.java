@@ -7,9 +7,14 @@ import java.awt.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+/*
+ *CreditDto
+ *
+ * @author Shilin Vyacheslav
+ */
 @Data
 @Builder
-public class CreditDto {
+public class CreditDto{
     private BigDecimal amount;
     private Integer term;
     private BigDecimal monthlyPayment;

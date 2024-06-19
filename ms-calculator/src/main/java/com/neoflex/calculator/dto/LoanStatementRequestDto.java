@@ -9,9 +9,14 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/*
+ *LoanStatementRequestDto
+ *
+ * @author Shilin Vyacheslav
+ */
 @Data
 @Builder
-public class LoanStatementRequestDto {
+public class LoanStatementRequestDto{
     @NotNull(message = "Поле должно быть заполнено")
     @DecimalMin(value = "30000", message = "Сумма должна быть больше или равна 30000")
     private BigDecimal amount;

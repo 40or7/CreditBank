@@ -20,11 +20,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/*
+ *CalculatorController
+ *
+ * @author Shilin Vyacheslav
+*/
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("calculator")
 @Slf4j
-public class CalculatorController {
+public class CalculatorController{
 
     private final CalculationService calculationService;
 

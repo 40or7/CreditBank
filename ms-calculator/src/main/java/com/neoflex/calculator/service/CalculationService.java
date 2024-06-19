@@ -7,8 +7,12 @@ import com.neoflex.calculator.dto.ScoringDataDto;
 
 import java.util.List;
 
-
-public interface CalculationService {
+/*
+ *CalculationService
+ *
+ * @author Shilin Vyacheslav
+ */
+public interface CalculationService{
 
     List<LoanOfferDto> generateLoanOffers(LoanStatementRequestDto loanStatementRequestDto);
 

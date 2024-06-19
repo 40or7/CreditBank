@@ -6,6 +6,11 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/*
+ *PaymentScheduleElementDto
+ *
+ * @author Shilin Vyacheslav
+ */
 @Data
 @Builder
 public class PaymentScheduleElementDto {
@@ -15,4 +20,5 @@ public class PaymentScheduleElementDto {
     private BigDecimal interestPayment;
     private BigDecimal debtPayment;
     private BigDecimal remainingDebt;
+
 }

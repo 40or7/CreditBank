@@ -1,6 +1,10 @@
 package com.neoflex.calculator.enums;
 
-
-public enum FamilyStatus {
+/*
+ *FamilyStatus
+ *
+ * @author Shilin Vyacheslav
+ */
+public enum FamilyStatus{
     SINGLE, MARRIED, DIVORCED, WIDOWED
 }

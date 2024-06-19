@@ -1,5 +1,10 @@
 package com.neoflex.calculator.enums;
 
-public enum WorkingStatus {
+/*
+ *WorkingStatus
+ *
+ * @author Shilin Vyacheslav
+ */
+public enum WorkingStatus{
     EMPLOYED, SELF_EMPLOYED, BUSINESS_OWNER, UNEMPLOYED
 }

@@ -1,7 +1,7 @@
 package com.neoflex.calculator.service.impl;
 
 import com.neoflex.calculator.dto.*;
-import com.neoflex.calculator.exception.VerificationException;
+import com.neoflex.calculator.exception.ClientRejected;
 import com.neoflex.calculator.service.CalculationService;
 import com.neoflex.calculator.service.CheckRateService;
 import com.neoflex.calculator.service.LoanCalculator;
@@ -11,11 +11,16 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDate;
 import java.util.List;
 
 import static com.neoflex.calculator.enums.WorkingStatus.UNEMPLOYED;
+import static com.neoflex.calculator.util.CalculatorUtils.getAge;
 
+/*
+ *CalculationServiceImpl
+ *
+ * @author Shilin Vyacheslav
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -41,7 +46,7 @@ public class CalculationServiceImpl implements CalculationService {
     public CreditDto calculateCredit(ScoringDataDto scoringDataDto) {
         log.info("Calculating credit");
         if (isDenied(scoringDataDto)) {
-            throw new VerificationException(String.format("Denied loan for account: %s", scoringDataDto.getAccountNumber()));
+            throw new ClientRejected(String.format("Denied loan for account: %s", scoringDataDto.getAccountNumber()));
         }
         BigDecimal amount = loanCalculator.calculateAmount(scoringDataDto.getAmount(), scoringDataDto.getIsInsuranceEnabled());
         int term = scoringDataDto.getTerm();
@@ -95,9 +100,5 @@ public class CalculationServiceImpl implements CalculationService {
             return true;
         }
         return scoringDataDto.getEmployment().getWorkExperienceCurrent() < 3;
-    }
-
-    private long getAge(LocalDate birthdate) {
-        return 0;
     }
 }
