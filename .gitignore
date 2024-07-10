@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+### Common ###
+target/
+reports/report*
+!.mvn/wrapper/maven-wrapper.jar
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
